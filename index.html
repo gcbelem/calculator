@@ -14,38 +14,42 @@
     <header>
         <h1>calculator</h1>
         <button id="dark-mode">
-            <span class="material-symbols-outlined">bedtime</span>
+            <span class="material-symbols-outlined" id="dark-mode-on">bedtime</span>
+            <span class="material-symbols-outlined" id="light-mode-on">wb_sunny</span>
             </button>
     </header>
 
     <main>
         <section>
-            <div id="history"></div>
-            <div id="result"></div>
+            <div id="history"><span></span></div>
+            <div id="result"><span></span></div>
             <button class="operation-top" id="clear"><span class="material-symbols-outlined">delete</span></button>
             <button class="operation-top" id="percentage">%</button>
             <button class="operation-top" id="division">÷</button>
             <button class="operation-right" id="multiplication">×</button>
-            <button class="number-button" id="number-7">7</button>
-            <button class="number-button" id="number-8">8</button>
-            <button class="number-button" id="number-9">9</button>
+            <button class="number-button" id="num-7">7</button>
+            <button class="number-button" id="num-8">8</button>
+            <button class="number-button" id="num-9">9</button>
             <button class="operation-right" id="subtraction">-</button>
-            <button class="number-button" id="number-4">4</button>
-            <button class="number-button" id="number-5">5</button>
-            <button class="number-button" id="number-6">6</button>
+            <button class="number-button" id="num-4">4</button>
+            <button class="number-button" id="num-5">5</button>
+            <button class="number-button" id="num-6">6</button>
             <button class="operation-right" id="addition">+</button>
-            <button class="number-button" id="number-1">1</button>
-            <button class="number-button" id="number-2">2</button>
-            <button class="number-button" id="number-3">3</button>
+            <button class="number-button" id="num-1">1</button>
+            <button class="number-button" id="num-2">2</button>
+            <button class="number-button" id="num-3">3</button>
             <button class="operation-right" id="equal">=</button>
-            <button class="number-button" id="number-0">0</button>
+            <button class="number-button" id="num-0">0</button>
             <button id="point">.</button>
-            <button class="operation" id="delete"><span class="material-symbols-outlined">backspace</span></button>
+            <button class="operation" id="backspace"><span class="material-symbols-outlined">backspace</span></button>
         </section>
     </main>
 
     <footer>
-        <span>By <a href="">Gustavo Belém</a></span>
+        By <a href="">Gustavo Belém</a>
     </footer>
+
+    <script src="script.js"></script>
+
 </body>
 </html>

@@ -3,6 +3,7 @@
 :root {
     background-color: var(--light-bg-color, #FBF9F4);
     border-color: var(--light-border-color, rgb(200, 200, 200));
+    
 }
 
 * {
@@ -39,6 +40,10 @@ header {
     transform: scale(1.25);
 }
 
+#light-mode-on {
+    display: none;
+}
+
 main {
     border: 1px solid rgb(200, 200, 200);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.500);
@@ -49,7 +54,7 @@ main {
 }
 
 section {
-    padding: .5rem;
+    padding: 0rem .5rem;
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: repeat(7,1fr);
@@ -58,23 +63,35 @@ section {
 
 #history {
     width: 100%;
-    height: 25px;
+    height: 1.75rem;
     border: 1px solid rgb(200, 200, 200);
     border-radius: 10px;
     grid-column: span 4;
     justify-self: flex-end;
     align-self: center;
-    
+}
+
+#history > span {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0rem .25rem;
+    font-size: .75rem;
 }
 
 #result {
     width: 75%;
-    height: 50px;
+    height: 3rem;
     border: 1px solid rgb(200, 200, 200);
     border-radius: 10px;
     justify-self: flex-end;
     align-self: center;
     grid-column: span 4;
+}
+
+section {
+    padding-bottom: .75rem;
 }
 
 section > button {
@@ -103,4 +120,28 @@ footer {
     text-align: center;
     font-size: .75rem;
     padding: .25rem;
+}
+
+footer > a {
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+}
+
+#value1, #value2 {
+    height: 100px;
+    width: 100px;
+    border: 5px dashed blue;
+    position: absolute;
+    top: 20%;
+    left: 75%;
+}
+
+#value2 {
+    height: 100px;
+    width: 100px;
+    border: 5px dashed red;
+    position: absolute;
+    top: 40%;
+    left: 75%;
 }
