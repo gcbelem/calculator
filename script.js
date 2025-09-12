@@ -1,7 +1,7 @@
 /* QUERY SELECTORS */
 
 let history = document.querySelector("#history>span")
-    result = document.querySelector("#result")
+    result = document.querySelector("#result>span")
 
 let clear = document.querySelector("#clear")
     percentage = document.querySelector("#percentage")
@@ -26,6 +26,7 @@ let numberButton = []
 let isDecimal = false
 let hasOperator = false
 let currentOperator = "0"
+let operators = ["+","-","/","*"]
 
 clear.addEventListener("click", inputClear)
 function inputClear() {
@@ -33,80 +34,132 @@ function inputClear() {
     result.textContent =""
     isDecimal = false
     hasOperator = false
+    currentOperator = "0"
+    leftSide = 0
+    rightSide = 0
 }
 
 division.addEventListener("click", inputDivision)
 function inputDivision() {
     isDecimal = false
     if (history.textContent == "") {
-        history.textContent = "0 /"
-        currentOperator = "/"
-        hasOperator = true
-    } else if (hasOperator == false) {
-        currentOperator = "/"
-        hasOperator = true
+        history.textContent = "0 / "
+        currentOperator = "divide"
+        } else if (hasOperator == false) {
+        history.append(" / ")
+        currentOperator = "divide"
+        } else if (hasOperator == true) {
+        history.textContent = history.textContent.replace("+" || "-" || "×"," / ")
+        currentOperator = "divide"
+        }
+    hasOperator = true
     }
-}
 
+/*    isDecimal = false
 percentage.addEventListener("click", inputPercentage)
 function inputPercentage() {
-    history.append(" % ")
-}
+    if (history.textContent == "") {
+        history.textContent = "0 /"
+        currentOperator = "divide"
+        hasOperator = true
+    } else if (hasOperator == false) {
+        history.append("/")
+        currentOperator = "divide"
+        hasOperator = true
+    }
+} */
 
 multiplication.addEventListener("click", inputMultiplication)
 function inputMultiplication() {
     isDecimal = false
     if (history.textContent == "") {
-        history.textContent = "0 *"
-        currentOperator = "*"
-        hasOperator = true
-    } else if (hasOperator == false) {
-        currentOperator = "*"
-        hasOperator = true
+        history.textContent = "0 × "
+        currentOperator = "multiply"
+        } else if (hasOperator == false) {
+        history.append(" × ")
+        currentOperator = "multiply"
+        } else if (hasOperator == true) {
+        history.textContent = history.textContent.replace("+" || "-" || "/"," × ")
+        currentOperator = "multiply"
+        }
+    hasOperator = true
     }
-}
+    
 
 subtraction.addEventListener("click", inputSubtraction)
 function inputSubtraction() {
     isDecimal = false
     if (history.textContent == "") {
-        history.textContent = "0 -"
-        currentOperator = "-"
-        hasOperator = true
-    } else if (hasOperator == false) {
-        currentOperator = "-"
-        hasOperator = true
+        history.textContent = "0 - "
+        currentOperator = "subtract"
+        } else if (hasOperator == false) {
+        history.append(" - ")
+        currentOperator = "subtract"
+        } else if (hasOperator == true) {
+        history.textContent = history.textContent.replace("+" || "-" || "×"," - ")
+        currentOperator = "subtract"
+        }
+    hasOperator = true
     }
-}
 
 addition.addEventListener("click", inputAddition)
 function inputAddition() {
     isDecimal = false
     if (history.textContent == "") {
-        history.textContent = "0 +"
-        currentOperator = "+"
-        hasOperator = true
-    } else if (hasOperator == false) {
-        currentOperator = "+"
-        hasOperator = true
+        history.textContent = "0 + "
+        currentOperator = "add"
+        } else if (hasOperator == false) {
+        history.append(" + ")
+        currentOperator = "add"
+        } else if (hasOperator == true) {
+        history.textContent = history.textContent.replace("*" || "-" || "/"," + ")
+        currentOperator = "add"
+        }
+    hasOperator = true
     }
-}
 
 equal.addEventListener("click", calculate)
 function calculate() {
-    switch /*cada operação como um caso distinto*/
-    isDecimal = false
+    switch (currentOperator) {
+        case "add":
+            result.textContent = Number(leftSide) + Number(rightSide);
+            break
+        case "subtract":
+            result.textContent = Number(leftSide) - Number(rightSide);
+            break
+        case "divide":
+            result.textContent = Number(leftSide) / Number(rightSide);
+            break
+        case "multiply":
+            result.textContent = Number(leftSide) * Number(rightSide);
+            break
+        /*case "percentage":
+            result.textContent = Number(leftSide) / 100;*/
+            break
+        default:
+            result.textContent = "error";
+        
+    }
 }
 
 point.addEventListener("click", inputPoint)
 function inputPoint() {
     if (isDecimal == false && history.textContent == "") {
+        history.textContent = "0."
+        leftSide += "."
+    } else if (isDecimal == false && hasOperator == true && rightSide == "0") {
         history.append("0.")
-        isDecimal = true
-    } else if (isDecimal == false && history.endsWith(".")) {
-        history.append("0.")
-        isDecimal = true        
+        rightSide += "."
+    } else {
+        history.append(".")
+        leftSide += "."
     }
+    isDecimal = true
+}
+
+point.addEventListener("click", inputBackspace)
+function inputBackspace() {
+
 }
 
 /* NUMBER KEYS */
@@ -116,10 +169,12 @@ rightSide = 0
 
 numberButton[0].addEventListener("click", insertNumber0)
 function insertNumber0() {
-    if (leftSide != 0) {
-    leftSide += "1"
-    history.append("0")
-    hasOperator = false
+    if (hasOperator == false) {
+        leftSide += "0"
+        history.append("0")
+    } else {
+        rightSide += "0"
+        history.append("0")       
     }
 }
 
