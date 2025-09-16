@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 :root {
-    background-color: var(--light-bg-color, #FBF9F4);
-    border-color: var(--light-border-color, rgb(200, 200, 200));
+    --light-bg-color:'' #FBF9F4;
+    --light-border-color:'' rgb(200, 200, 200);
+    --light-text-color: black;
+
+    --dark-bg-color: #121212;
+    --dark-text-color: white;
+    --dark-text-color: white;
+    --dark-bg-operation-color: #FF9500;
+    --dark-button-bg: #1F1F1F;
 }
 
 * {
@@ -14,12 +21,12 @@
 
 body {
     width: 100vw;
+    height: 100vh;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 
 header {
     display: flex;
@@ -29,18 +36,16 @@ header {
     margin: auto;
 }
 
-#dark-mode {
-    background-color: #FBF9F4;
+#dark-mode-button {
+    background-color: var(--light-bg-color);
     cursor: pointer;
 }
 
-#dark-mode:hover {
+#dark-mode-button:hover {
     transform: scale(1.25);
 }
 
-#light-mode-on {
-    display: none;
-}
+/* CALCULATOR AREA */
 
 main {
     border: 1px solid rgb(200, 200, 200);
@@ -52,10 +57,9 @@ main {
 }
 
 section {
-    padding: 0rem .5rem;
+    padding: 0rem .5rem .75rem .5rem;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(7,1fr);
+    grid-template:  repeat(7,1fr) / repeat(4,1fr);
     gap: 1rem;
 }
 
@@ -102,10 +106,6 @@ section {
     font-weight: 500;
 }
 
-section {
-    padding-bottom: .75rem;
-}
-
 section > button {
     border-radius: 250px;
 }
@@ -137,5 +137,31 @@ footer {
 footer > a {
     font-weight: 500;
     text-decoration: none;
-    color: black;
+    color: var(--light-text-color);
+}
+
+/*DARK MODE */
+
+.dark-mode, 
+.dark-mode #dark-mode-button{
+    background-color: var(--dark-bg-color);
+}
+
+.dark-mode .number-button {
+    color: var(--dark-text-color);
+    background-color: var(--dark-button-bg);
+}
+
+.dark-mode .operation-top,
+.dark-mode .operation-right {
+    background-color: var(--dark-bg-operation-color);
+    color: var(--dark-text-color);
+}
+
+.dark-mode h1, 
+.dark-mode #history, 
+.dark-mode #result,
+.dark-mode footer,
+.dark-mode footer a {
+        color: var(--dark-text-color);
 }

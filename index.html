@@ -10,21 +10,20 @@
 </head>
 
 <body>
-
+    
     <header>
         <h1>calculator</h1>
-        <button id="dark-mode">
-            <span class="material-symbols-outlined" id="dark-mode-on">bedtime</span>
-            <span class="material-symbols-outlined" id="light-mode-on">wb_sunny</span>
+        <button id="dark-mode-button">
+            <img src="images/bedtime_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" id="dark-mode-icon" alt="dark mode icon">
             </button>
     </header>
 
     <main>
         <section>
-            <div id="history"><span>test</span></div>
-            <div id="result"><span>test</span></div>
+            <div id="history"><span></span></div>
+            <div id="result"><span></span></div>
             <button class="operation-top" id="clear"><span class="material-symbols-outlined">delete</span></button>
-            <button class="operation-top" id="percentage">%</button>
+            <button class="operation-top" id="plusminus">±</button>
             <button class="operation-top" id="division">/</button>
             <button class="operation-right" id="multiplication">×</button>
             <button class="number-button" id="num-7">7</button>
@@ -40,13 +39,13 @@
             <button class="number-button" id="num-3">3</button>
             <button class="operation-right" id="equal">=</button>
             <button class="number-button" id="num-0">0</button>
-            <button id="point">.</button>
-            <button class="operation" id="backspace"><span class="material-symbols-outlined">backspace</span></button>
+            <button class="number-button" id="point">.</button>
+            <button class="operation-right" id="backspace"><span class="material-symbols-outlined">backspace</span></button>
         </section>
     </main>
 
     <footer>
-        By <a href="">Gustavo Belém</a>
+        By <a href="https://github.com/gcbelem" target="_self">Gustavo Belém</a>
     </footer>
 
     <script src="script.js"></script>
